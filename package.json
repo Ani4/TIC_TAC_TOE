@@ -15,7 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "push": "git commit -a & git push -u origin master"
+    "push": "git commit -a & git push -u origin master",
+    "upload": "git push heroku master"
   },
   "eslintConfig": {
     "extends": "react-app"
