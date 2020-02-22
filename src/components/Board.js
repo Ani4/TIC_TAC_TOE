@@ -8,7 +8,7 @@ class Board extends Component {
       player1: props.player1 || "player1",
       player2: props.player2 || "player2",
       turn: "X",
-      scoreBoard: [0, 1]
+      scoreBoard: [0, 0]
     };
     this.handleTurn = this.handleTurn.bind(this);
     this.isWins = this.isWins.bind(this);
@@ -41,7 +41,8 @@ class Board extends Component {
   handleTurn(i) {
     let boards = this.state.boards;
     let b = null;
-    boards[i] = this.state.turn;
+    if (boards[i] === " ") boards[i] = this.state.turn;
+    else return alert("Select one of the blank titles");
     if (this.state.turn === "X") {
       this.setState({ turn: "O", boards: boards });
     } else this.setState({ turn: "X", boards: boards });
