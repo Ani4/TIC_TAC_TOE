@@ -33,7 +33,7 @@
   height: 100%;
   width: 100%;
   border: 1.5px solid black;
-  font-size: 7vmin;
+  font-size: 15vmin;
 }
 
 .board .block:nth-child(1) {
@@ -81,4 +81,18 @@
 .board .block:hover {
   background-color: skyblue;
 
+}
+
+.buttons {
+  margin-top: 15px;
+  width: 70vmin;
+  height: 7vmin;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.buttons button {
+  font-size: 3vmin;
+  width: 35vmin;
 }

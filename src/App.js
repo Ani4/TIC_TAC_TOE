@@ -6,12 +6,12 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      p1: "player1",
-      p2: "player2"
+      p1: "Aniket",
+      p2: "Ruchi"
     };
   }
   render() {
-    return <Board player1={this.state.player1} player2={this.state.player2} />;
+    return <Board player1={this.state.p1} player2={this.state.p2} />;
   }
 }
 
