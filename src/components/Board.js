@@ -128,24 +128,32 @@ class Board extends Component {
         </div>
         <div className="container">
           <div className="p1">
+            <label htmlFor="player1">
+              <span className="fa fa-user"></span>
+            </label>
             <input
+              maxLength="20"
               type="text"
               placeholder="player1"
               id="player1"
               onChange={e => this.handleChange(e)}
               value={this.state.player1}
             />
-            : {this.state.scoreBoard[0]}
+            <span className="points">{this.state.scoreBoard[0]}</span>
           </div>
           <div className="p2">
+            <label htmlFor="player2">
+              <span className="fa fa-user"></span>
+            </label>
             <input
+              maxLength="20"
               type="text"
               placeholder="player2"
               id="player2"
               onChange={e => this.handleChange(e)}
               value={this.state.player2}
             />
-            : {this.state.scoreBoard[1]}
+            <span className="points">{this.state.scoreBoard[1]}</span>
           </div>
           <div className="wrraper">
             <div
