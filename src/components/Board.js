@@ -7,19 +7,24 @@ class Board extends Component {
       boards: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
       player1: props.player1,
       player2: props.player2,
-      turn: "X",
+      turn: Math.random() < 0.4 ? "X" : "O",
       scoreBoard: [0, 0],
       gameFinish: 0,
       count: 9,
       winsTiles: [],
-      whowin: 0
+      whowin: 0,
+      shakeBoard: false,
+      shakeGame: false
     };
     this.handleTurn = this.handleTurn.bind(this);
     this.isWins = this.isWins.bind(this);
     this.resetBoard = this.resetBoard.bind(this);
     this.resetGame = this.resetGame.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
-
+  toggle(e) {
+    console.log(e.target.classList);
+  }
   isWins(boards, turn) {
     let ip = 0;
     if (turn === "X") ip = -1;
@@ -68,7 +73,6 @@ class Board extends Component {
   handleTurn(i) {
     if (this.state.gameFinish === 1 || this.state.count === 0) return;
     let boards = this.state.boards;
-
     if (boards[i] === " ") boards[i] = this.state.turn;
     else return alert("Select one of the blank tiles");
     if (this.state.turn === "X") {
@@ -83,32 +87,46 @@ class Board extends Component {
       boards: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
       gameFinish: 0,
       count: 9,
-      winsTiles: []
+      winsTiles: [],
+      shakeBoard: true,
+      whowin: 0,
+      turn: Math.random() > 0.4 ? "X" : "O"
     });
   }
 
   resetGame() {
     this.resetBoard();
     this.setState({
-      turn: "X",
-      scoreBoard: [0, 0]
+      scoreBoard: [0, 0],
+      shakeGame: true
     });
   }
 
   render() {
     return (
-      <>
-        <h1>TIC TAC TOE</h1>
+      <div
+        className={this.state.shakeGame ? "shake root" : "root"}
+        onAnimationEnd={() => this.setState({ shakeGame: false })}
+      >
+        <h1>
+          <span className="fa fa-times"></span>
+          <span className="title">TIC-TAC-TOE</span>
+          <span className="fa fa-circle-o"></span>
+        </h1>
+
         <div className="what_happens">
+          {}
           {(() => {
             if (this.state.count === 0) return "Oops! Play Smartly... DRAW";
             if (this.state.whowin === -1) return this.state.player1 + " WINS";
             if (this.state.whowin === 1) return this.state.player2 + " WINS";
-            if (this.state.turn === "X") return this.state.player1 + "'s turn";
-            if (this.state.turn === "O") return this.state.player2 + "'s turn";
+            if (this.state.turn === "X")
+              return this.state.player1 + "'s turn with X";
+            if (this.state.turn === "O")
+              return this.state.player2 + "'s turn with O";
           })()}
         </div>
-        <div className="score">
+        <div className="container">
           <div className="p1">
             <input
               type="text"
@@ -119,7 +137,7 @@ class Board extends Component {
             />
             : {this.state.scoreBoard[0]}
           </div>
-          <div className="p1">
+          <div className="p2">
             <input
               type="text"
               placeholder="player2"
@@ -129,30 +147,35 @@ class Board extends Component {
             />
             : {this.state.scoreBoard[1]}
           </div>
-        </div>
-        <div className="board">
-          {this.state.boards.map((e, i) => (
+          <div className="wrraper">
             <div
-              key={i}
-              className={`block ${(() => {
-                if (this.state.winsTiles.includes(i)) return "wins";
-              })()}`}
-              onClick={() => this.handleTurn(i)}
+              className={this.state.shakeBoard ? "shake board" : "board"}
+              onAnimationEnd={() => this.setState({ shakeBoard: false })}
             >
-              {e}
+              {this.state.boards.map((e, i) => (
+                <div
+                  key={i}
+                  className={`block ${(() => {
+                    if (this.state.winsTiles.includes(i)) return "wins";
+                  })()}`}
+                  onClick={() => this.handleTurn(i)}
+                >
+                  {e}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="buttons">
-          <button className="Reset" onClick={this.resetBoard}>
-            New Board
-          </button>
-          <button className="clear" onClick={this.resetGame}>
-            New Game
-          </button>
+            <div className="buttons">
+              <button className="Reset" onClick={this.resetBoard}>
+                New Board
+              </button>
+              <button className="clear" onClick={this.resetGame}>
+                New Game
+              </button>
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 }

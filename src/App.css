@@ -4,18 +4,39 @@
   box-sizing: border-box;
 }
 
-#root {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.root {
+  height: 100vh;
   align-items: center;
-
+  width: 100%;
+  background: -webkit-linear-gradient(to top, #f4791f, #659999);
+  background: linear-gradient(to bottom, #f4791f, #659999);
 }
 
-#root h1 {
-  margin-bottom: 2vmin;
-  font-size: 7vmin;
+.root h1 {
+  position: absolute;
+  top: 0;
+  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  font-size: 4vmax;
+  width: 100%;
+  text-align: center;
+  font-family: 'Monoton';
+}
+
+.root h1 .title {
+  font-size: 4vmax;
+}
+
+h1 span {
+  margin: 0 2vw 0;
+  line-height: 1rem;
+  animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+}
+
+h1 span:nth-child(3) {
+  animation: spin 2s infinite linear reverse;
+  -webkit-animation: shake 1s infinite linear reverse;
 }
 
 .board {
@@ -24,6 +45,12 @@
   grid-template-rows: repeat(3, 1fr);
   height: 70vmin;
   width: 70vmin;
+
+}
+
+.shake {
+  animation: shake .1s linear;
+  -webkit-animation: shake .1s linear;
 }
 
 .board .block {
@@ -57,7 +84,6 @@
 
 .board .block:nth-child(6) {
   border-right: none;
-
 }
 
 .board .block:nth-child(7) {
@@ -76,10 +102,11 @@
 
 .board .wins {
   background-color: green;
+  pointer-events: none;
 }
 
 .board .block:hover {
-  background-color: skyblue;
+  background-color: rgba(138, 209, 87, 0.404);
 
 }
 
@@ -95,4 +122,128 @@
 .buttons button {
   font-size: 3vmin;
   width: 35vmin;
+}
+
+
+.container {
+  width: 100vw;
+  position: absolute;
+
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+
+
+}
+
+.what_happens {
+  padding-top: 15vmin;
+  text-align: center;
+  color: #333333;
+  font-family: "Trade Winds";
+  font-size: 1.5rem;
+}
+
+.what_happens ::last-word {
+  color: #00f;
+}
+
+.p1 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  order: 1;
+}
+
+.wrraper {
+  order: 2;
+}
+
+.p2 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  order: 3;
+}
+
+input {
+  all: unset;
+}
+
+
+
+
+
+
+/* ANIMATION KEYFRAMES */
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(720deg);
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-1rem);
+    -webkit-transform: translateX(-1rem);
+    -moz-transform: translateX(-1rem);
+    -ms-transform: translateX(-1rem);
+    -o-transform: translateX(-1rem);
+  }
+
+  40% {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+
+  60% {
+    transform: translateX(1rem);
+    -webkit-transform: translateX(1rem);
+    -moz-transform: translateX(1rem);
+    -ms-transform: translateX(1rem);
+    -o-transform: translateX(1rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+    -webkit-transform: translateX(-1rem);
+    -moz-transform: translateX(-1rem);
+    -ms-transform: translateX(-1rem);
+    -o-transform: translateX(-1rem);
+  }
+
+  100% {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+
 }
