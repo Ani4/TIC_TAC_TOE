@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  background: -webkit-linear-gradient(to top, #f4791f, #659999);
-  background: linear-gradient(to bottom, #f4791f, #659999);
-}
 
 .root {
   height: 100vh;
@@ -21,11 +17,12 @@ html {
   position: absolute;
   top: 0;
   margin-bottom: 1rem;
-  padding-top: 1.5rem;
+  padding-top: .8rem;
   font-size: 4vmax;
   width: 100%;
   text-align: center;
   font-family: 'Monoton';
+  border-bottom: 1px solid black;
 }
 
 .root h1 .title {
@@ -127,26 +124,48 @@ h1 span:nth-child(3) {
 .buttons button {
   font-size: 3vmin;
   width: 35vmin;
+  outline: none;
+  border: none;
+  font-family: 'Shojumaru';
+  cursor: pointer;
+  opacity: 0.5;
+
 }
 
+.buttons button:nth-child(1) {
+  background-color: #38ef7d;
+
+}
+
+.buttons button:nth-child(2) {
+  background: #8E0E00;
+
+
+
+
+}
+
+.buttons button:hover {
+  opacity: 1;
+
+}
 
 .container {
   width: 100vw;
   position: absolute;
-
   display: flex;
   justify-content: space-around;
-  bottom: 0;
+
 
 
 }
 
 .what_happens {
-  padding-top: 15vmin;
+  padding-top: calc(6vmax + 32px);
   text-align: center;
   color: #333333;
   font-family: "Trade Winds";
-  font-size: 1.5rem;
+  font-size: 3vmin;
 }
 
 .what_happens ::last-word {
@@ -159,6 +178,7 @@ h1 span:nth-child(3) {
   justify-content: center;
   align-items: center;
   order: 1;
+  padding-bottom: 6vh;
 }
 
 .wrraper {
@@ -171,16 +191,20 @@ h1 span:nth-child(3) {
   justify-content: center;
   align-items: center;
   order: 3;
+  padding-bottom: 6vh;
+
 }
 
 label {
-  font-size: 8rem;
+  font-size: 10vmax;
 }
 
 input[type="text"] {
   all: unset;
+  display: inline-block;
+  width: 100%;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 3vmin;
   font-family: "Pangolin", 'Press Start 2P';
 
 }
@@ -191,12 +215,56 @@ input[type="text"]:focus {
 }
 
 .points {
-  font-size: 8rem;
-  font-family: "Pangolin", 'Press Start 2P';
-
+  font-size: 6vmax;
+  font-family: 'Monoton';
 }
 
 
+/* MEDIA QUERY */
+
+@media screen and (max-width: 640px) {
+  .container {
+    /* flex-direction: column;
+    flex-wrap: wrap; */
+    display: inline-block;
+
+  }
+
+  .p1 {
+    margin-top: 3rem;
+    width: calc(100vw - 51vw);
+
+    order: 4;
+    float: left;
+    padding-bottom: 0;
+
+
+
+  }
+
+  label {
+    font-size: 10vw;
+  }
+
+  .p2 {
+    width: calc(100vw - 51vw);
+    margin-top: 3rem;
+
+    order: 4;
+    float: right;
+    padding-bottom: 0;
+
+
+  }
+
+  .board {
+    margin: 0 auto;
+  }
+
+  .buttons {
+    margin: 0 auto;
+  }
+}
 
 
 

@@ -129,7 +129,7 @@ class Board extends Component {
         <div className="container">
           <div className="p1">
             <label htmlFor="player1">
-              <span className="fa fa-user"></span>
+              <span className="fa fa-times"></span>
             </label>
             <input
               maxLength="20"
@@ -143,7 +143,7 @@ class Board extends Component {
           </div>
           <div className="p2">
             <label htmlFor="player2">
-              <span className="fa fa-user"></span>
+              <span className="fa fa-circle-o"></span>
             </label>
             <input
               maxLength="20"
