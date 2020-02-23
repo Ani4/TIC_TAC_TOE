@@ -74,7 +74,7 @@ class Board extends Component {
     if (this.state.gameFinish === 1 || this.state.count === 0) return;
     let boards = this.state.boards;
     if (boards[i] === " ") boards[i] = this.state.turn;
-    else return alert("Select one of the blank tiles");
+    else return;
     if (this.state.turn === "X") {
       this.setState({ turn: "O", boards: boards, count: this.state.count - 1 });
     } else
